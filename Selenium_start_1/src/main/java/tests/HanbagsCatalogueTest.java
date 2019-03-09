@@ -1,14 +1,12 @@
 package tests;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.CheckoutPage;
-import pages.HandbagsCataloguePage;
-import pages.MainPage;
-import pages.ReviewYourOrderPage;
+import pages.*;
 
 public class HanbagsCatalogueTest {
 
@@ -41,6 +39,12 @@ public class HanbagsCatalogueTest {
         checkoutPage.stateProvince();
         checkoutPage.postalCode();
         checkoutPage.submitOrder();
+        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(this.driver);
+        String status = orderConfirmationPage.GetOrderStatusInfo();
+        Assert.assertEquals(status, "Order completed");
+
+
+        //Asssertion
     }
 
 }

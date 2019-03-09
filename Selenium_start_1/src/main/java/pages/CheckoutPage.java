@@ -50,15 +50,16 @@ public class CheckoutPage extends BasePage {
 
     //robimy odzielna metode poniewaz po wybraniu Country z dropdown list ponizsze pola odswirzaja sie
     public void postalCode() {
-        By postalCodeSelector = By.cssSelector("#billingStateProvince");
+        By postalCodeSelector = By.cssSelector("#billingPostalCode");
         InputText postalCodeInput = new InputText(driver, postalCodeSelector);
         postalCodeInput.sendKeys("80-180");
     }
 
     //robimy odzielna metode poniewaz po wybraniu Country z dropdown list ponizsze pola odswirzaja sie
     public void submitOrder() {
-        By sumbitOrderSelector = By.cssSelector("#submitOrder");
-        Button submitOrderButton;
+        By submitOrderSelector = By.cssSelector("#submitOrder");
+        Button submitOrderButton = new Button(driver,submitOrderSelector);
+        submitOrderButton.clickWithJs();
 
     }
 
