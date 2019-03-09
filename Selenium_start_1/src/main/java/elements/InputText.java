@@ -20,8 +20,8 @@ public class InputText {
         element = wait.until(ExpectedConditions.elementToBeClickable((by)));
     }
 
-    public InputText sendKeys(){
-        this.element.click();
+    public InputText sendKeys(String text){
+        this.element.sendKeys(text);
         return this;
     }
     public InputText clearAndSendKyes(){

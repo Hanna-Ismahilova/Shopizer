@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.CheckoutPage;
 import pages.HandbagsCataloguePage;
 import pages.MainPage;
 import pages.ReviewYourOrderPage;
@@ -31,8 +32,15 @@ public class HanbagsCatalogueTest {
         HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(this.driver);
         handbagsCataloguePage.addBagToCart();
         handbagsCataloguePage.proceedToCheckout();
+
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(this.driver);
         reviewYourOrderPage.clickProceedToCheckout();
+
+        CheckoutPage checkoutPage = new CheckoutPage(this.driver);
+        checkoutPage.completeShippingForm();
+        checkoutPage.stateProvince();
+        checkoutPage.postalCode();
+        checkoutPage.submitOrder();
     }
 
 }
