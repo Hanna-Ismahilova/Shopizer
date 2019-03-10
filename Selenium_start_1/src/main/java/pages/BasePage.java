@@ -1,4 +1,4 @@
-//rodzic
+//RODZIC
 package pages;
 
 import org.openqa.selenium.JavascriptExecutor;

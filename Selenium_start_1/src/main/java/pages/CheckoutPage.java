@@ -1,5 +1,7 @@
 package pages;
 
+import dataModels.Address;
+import dataModels.RegisteredUser;
 import elements.Button;
 import elements.InputText;
 import elements.Select;
@@ -41,33 +43,29 @@ public class CheckoutPage extends BasePage {
     private By phoneNumberSelector = By.cssSelector("#customer\\2e billing\\2e phone");
     private InputText phoneNumberInput;
 
-    //robimy odzielna metode poniewaz po wybraniu Country z dropdown list ponizsze pola odswirzaja sie
+    //robimy odzielna metode poniewaz po wybraniu Country z dropdown list ponizsze pola odswierzaja sie
     public void stateProvince() {
         By stateProvinceSelector = By.cssSelector("#billingStateProvince");
         InputText stateProvinceInput = new InputText(driver, stateProvinceSelector);
         stateProvinceInput.sendKeys("Gdansk");
     }
-
-    //robimy odzielna metode poniewaz po wybraniu Country z dropdown list ponizsze pola odswirzaja sie
+    //robimy odzielna metode poniewaz po wybraniu Country z dropdown list ponizsze pola odswierzaja sie
     public void postalCode() {
         By postalCodeSelector = By.cssSelector("#billingPostalCode");
         InputText postalCodeInput = new InputText(driver, postalCodeSelector);
         postalCodeInput.sendKeys("80-180");
     }
-
-    //robimy odzielna metode poniewaz po wybraniu Country z dropdown list ponizsze pola odswirzaja sie
+    //robimy odzielna metode poniewaz po wybraniu Country z dropdown list ponizsze pola odswierzaja sie
     public void submitOrder() {
         By submitOrderSelector = By.cssSelector("#submitOrder");
         Button submitOrderButton = new Button(driver,submitOrderSelector);
         submitOrderButton.clickWithJs();
-
     }
-
-    public void completeShippingForm() {
-        firstNameInput.sendKeys("Hanna");
-        lastNameInput.sendKeys("Ismahilova");
-        streetAddressInput.sendKeys("Street");
-        cityInput.sendKeys("City");
+    public void completeShippingForm(Address address, RegisteredUser firstName, RegisteredUser lastName, Address city) {
+        firstNameInput.sendKeys(firstName.getFirstname());
+        lastNameInput.sendKeys(lastName.getLastname());
+        streetAddressInput.sendKeys(address.getStreetAddress());
+        cityInput.sendKeys(city.getCity());
         countrySelect.choose("Brazil");
         emailAddressInput.sendKeys("test@example.com");
         phoneNumberInput.sendKeys("0123465789");
